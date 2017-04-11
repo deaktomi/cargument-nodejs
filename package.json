@@ -12,6 +12,7 @@
   ],
   "author": "Tomi",
   "license": "Beerware",
+  "repository": "https://github.com/tamasdeak93/cargument-nodejs",
   "dependencies": {
     "ejs": "^2.5.6",
     "express": "^4.14.1",
