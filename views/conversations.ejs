@@ -1,0 +1,27 @@
+<%- include('header') %>
+<%- include('profile-header',{user : user}) %>
+
+<div>
+    <div>
+        <h1 class="modal-title">My messages:</h1>
+    </div>
+
+    <% conversations.forEach(function (conversation){ %>
+    <a class="alert-info" href="/conversations/details/<%= conversation.id %>">
+        <table>
+            <tr>
+                <td rowspan="2"><span align="center" class="glyphicon glyphicon-envelope"/></td>
+                <td><%= conversation.user.name %> - <%= conversation.user.regNumber %></td>
+                <td rowspan="2"><span align="center" class="glyphicon glyphicon-arrow-right"/></td>
+            </tr>
+            <tr>
+                <td><%= conversation.newMessages %> new message (<%= conversation.lastMessageDate %>)</td>
+            </tr>
+        </table>
+    </a>
+    <% }); %>
+
+    <a href="/conversations/new">New message <span align="center" class="glyphicon glyphicon-plus"/></a>
+</div>
+
+<%- include('footer') %>

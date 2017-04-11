@@ -1,0 +1,25 @@
+<%- include('header') %>
+<%- include('profile-header',{user : user}) %>
+
+<div>
+    <div class="col-xs-12 text-center">
+        <h2>Profile:</h2>
+    </div>
+    <div class="col-md-push-3 col-md-6 col-xs-12">
+        <form method="post">
+            <div class="form-group">
+                <label for="name">Name (optional): </label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="regNumber">Registration number: </label>
+                <input type="text" class="form-control" id="regNumber">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Save"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('footer') %>

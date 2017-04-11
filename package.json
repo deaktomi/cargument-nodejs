@@ -1,0 +1,20 @@
+{
+  "name": "cargument",
+  "version": "1.0.0",
+  "description": "Use it when the lasy in the car in front of you is sexy or cannot drive.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Cargument"
+  ],
+  "author": "Tomi",
+  "license": "Beerware",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.14.1",
+    "express-session": "^1.15.2"
+  }
+}
