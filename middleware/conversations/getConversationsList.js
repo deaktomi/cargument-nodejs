@@ -9,12 +9,15 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
         console.log("getConversationsList");
         conversationModel.find({
-
-        }, function (err, results) {
+            $or: [ {_user1: req.session.userId}, {_user2:req.session.userId}]
+        }).populate('_user1 _user2')
+            .exec(function (err, results) {
             if (err) {
+                console.log(err.message);
                 return next(new Error('Error getting conversations'));
             }
 
+            console.log("Conversations set on tpl");
             res.tpl.conversations = results;
             return next();
         });

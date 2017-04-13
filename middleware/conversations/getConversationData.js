@@ -9,8 +9,8 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
         console.log("getConversationData");
         conversationModel.findOne({
-
-        }, function (err, results) {
+            _id: req.param("id")
+        }).populate("_messages _user1 _user2").exec(function (err, results) {
             if (err) {
                 return next(new Error('Error getting conversation'));
             }

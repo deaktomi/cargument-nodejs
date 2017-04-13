@@ -10,12 +10,14 @@ var addMessage = require('../middleware/conversations/addMessage');
 
 var userModel = require('../models/user');
 var conversationsModel = require('../models/conversations');
+var messageModel = require('../models/message');
 
 module.exports = function (app) {
 
     var objectRepository = {
         userModel: userModel,
-        conversationsModel: conversationsModel
+        conversationsModel: conversationsModel,
+        messageModel: messageModel,
     };
 
     /**

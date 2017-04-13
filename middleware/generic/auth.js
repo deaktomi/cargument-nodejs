@@ -5,7 +5,11 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
         console.log("auth");
-        return next();
+        if (typeof req.session.userId === 'undefined') {
+            return res.redirect('/login');
+        } else {
+            return next();
+        }
     };
 
 };

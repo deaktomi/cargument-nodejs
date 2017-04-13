@@ -1,54 +1,22 @@
-/**
- * Conversation model (mock)
- * @constructor
- */
-var Conversation = function () {
+var Schema = require('mongoose').Schema;
+var db = require('../config/db');
 
-};
-
-var ConversationInstanceMock = {
-    user: {
-        id: 2,
-        name: 'Panni',
-        regNumber: 'ABC - 069'
+var Conversation = db.model('Conversation', {
+    _user1: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
-    id: 1,
-    newMessages: 2,
-    lastMessageDate: '2017-03-30 18:16',
-    messages: [
-        {
-            senderId: 1,
-            body: 'Test üzenet'
-        },
-        {
-            senderId: 2,
-            body: 'Test üzenet 2'
-        }
-    ]
-};
-
-/**
- * Find one element with the criteria
- * @param criteria
- * @param cb error first callback
- * @returns {*}
- */
-Conversation.findOne = function (criteria, cb) {
-
-    //returns 1 mocked item
-    return cb(null, ConversationInstanceMock);
-};
-
-/**
- * Find all elements with the criteria
- * @param criteria
- * @param cb error first callback
- * @returns {*}
- */
-Conversation.find = function (criteria, cb) {
-
-    //returns 3 mocked item
-    return cb(null, [ConversationInstanceMock, ConversationInstanceMock, ConversationInstanceMock]);
-};
+    _user2: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    lastMessageDate: Date,
+    newMessages1: Number,
+    newMessages2: Number,
+    _messages: [{
+        type : Schema.Types.ObjectId,
+        ref: 'Message'
+    }]
+});
 
 module.exports = Conversation;

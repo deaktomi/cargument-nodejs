@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 var session = require('express-session');
+var bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 
@@ -21,7 +22,17 @@ app.use(session({
 }));
 
 /**
- * Let's creat the .tpl and .error on the res object
+ * Parse parameters in POST
+ */
+// for parsing application/json
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+/**
+ * Let's create the .tpl and .error on the res object
  */
 app.use(function (req, res, next) {
     res.tpl = {};

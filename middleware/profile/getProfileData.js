@@ -9,15 +9,15 @@ module.exports = function (objectrepository) {
     return function (req, res, next) {
         console.log("getProfileData");
         userModel.findOne({
-        }, function (err, results) {
+            _id: req.session.userId
+        }, function (err, result) {
             if (err) {
                 return next(new Error('Error getting user info'));
             }
 
-            res.tpl.user = results;
+            res.tpl.user = result;
             return next();
         });
-        return next();
     };
 
 };

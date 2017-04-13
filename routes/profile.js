@@ -25,6 +25,7 @@ module.exports = function (app) {
      */
     app.post('/profile',
         authMW(objectRepository),
+        getProfileDataMW(objectRepository),
         updateProfileMW(objectRepository, 'login'),
         function (req, res, next) {
             return res.redirect('/conversations');
