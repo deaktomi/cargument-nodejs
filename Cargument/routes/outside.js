@@ -4,6 +4,7 @@ var checkUserLoginMW = require('../middleware/generic/checkUserLogin');
 var logoutMW = require('../middleware/generic/logout');
 var authMW = require('../middleware/generic/auth');
 var renderMW = require('../middleware/generic/render');
+var getErrorMessageMW = require('../middleware/generic/getErrorMessage');
 
 var userModel = require('../models/user');
 
@@ -45,4 +46,12 @@ module.exports = function (app) {
             return res.redirect('/login');
         }
     );
+
+    /**
+     * Error
+     */
+    app.get('/error/:errorMessage',
+        getErrorMessageMW(objectRepository),
+        renderMW(objectRepository, 'error')
+    )
 };

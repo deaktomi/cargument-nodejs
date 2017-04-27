@@ -8,18 +8,29 @@
 
 
     <% conversations.forEach(function (conversation){ %>
-    <a class="alert-info" href="/conversations/details/<%= conversation._id %>">
+    <div class="alert-info" >
         <table>
             <tr>
                 <td rowspan="2"><span align="center" class="glyphicon glyphicon-envelope"/></td>
-                <td><%= conversation._user1.name %> - <%= conversation._user1.regNumber %></td>
+                <td>
+                    <a href="/conversations/details/<%= conversation._id %>">
+                        <%= user.regNumber == conversation._user1.regNumber ? conversation._user2.name : conversation._user1.name %> - <%= user.regNumber == conversation._user1.regNumber ? conversation._user2.regNumber :conversation._user1.regNumber %>
+                    </a>
+                </td>
                 <td rowspan="2"><span align="center" class="glyphicon glyphicon-arrow-right"/></td>
             </tr>
             <tr>
-                <td><%= conversation.newMessages1 %> new message (<%= conversation.lastMessageDate %>)</td>
+                <td colspan="3">
+                    <a href="/conversations/delete/<%= conversation._id %>">Delete</a>
+                </td>
             </tr>
+            <!--
+            <tr>
+                <td><%= user.regNumber == conversation._user1.regNumber ? conversation.newMessages2 : conversation.newMessages1 %> new message (<%= conversation.lastMessageDate %>)</td>
+            </tr>
+            -->
         </table>
-    </a>
+    </div>
     <% }); %>
 
 

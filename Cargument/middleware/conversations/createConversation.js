@@ -16,6 +16,10 @@ module.exports = function (objectrepository) {
             if (err) {
                 return next(new Error('Target user not existing'));
             }
+            if (result == null){
+                console.log("Tried to send message to not existing user");
+                return res.redirect('/error/Tried-to-send-message-to-not-existing-user');
+            }
 
             var message = new messageModel();
             message.body = req.body.message;

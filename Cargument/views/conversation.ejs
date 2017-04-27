@@ -3,19 +3,19 @@
 
 <div>
     <div class="col-xs-12 text-center">
-        <h2><%= conversation._user2.name %> - <%= conversation._user2.regNumber %> - Messages:</h2>
+        <h2><%= user.regNumber  == conversation._user1.regNumber ? conversation._user2.name : conversation._user1.name %> - <%= user.regNumber  == conversation._user1.regNumber ? conversation._user2.regNumber : conversation._user1.regNumber %> - Messages:</h2>
     </div>
 
     <div class="col-md-push-3 col-md-6 col-xs-12">
     <% conversation._messages.forEach(function (message){ %>
-        <% if (message.senderId == conversation._user2.id) { %>
+        <% if (message._senderUser.equals(user._id)) { %>
         <div class="alert-warning">
             <b>Me:</b><br/>
             <%= message.body%>
         </div>
         <% } else { %>
-        <div class="alert-info">
-            <b><%= conversation._user2.name %>:</b><br/>
+        <div class="alert-info" align="right">
+            <b><%=conversation._user1.regNumber == user.regNumber ? conversation._user2.name : conversation._user1.name %>:</b><br/>
             <%= message.body%>
         </div>
         <% } %>

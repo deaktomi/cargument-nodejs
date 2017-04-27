@@ -5,7 +5,7 @@ var getConversationsListMW = require('../middleware/conversations/getConversatio
 var conversationAuthMW = require('../middleware/conversations/conversationAuth');
 var getConversationDataMW = require('../middleware/conversations/getConversationData');
 var createConversation = require('../middleware/conversations/createConversation');
-var deleteConversation = require('../middleware/conversations/deleteConversation');
+var deleteConversationMW = require('../middleware/conversations/deleteConversation');
 var addMessage = require('../middleware/conversations/addMessage');
 
 var userModel = require('../models/user');
@@ -31,7 +31,7 @@ module.exports = function (app) {
     );
 
     /**
-     * Open conversation page
+     * Delete conversation
      */
     app.get('/conversations/details/:id',
         authMW(objectRepository),
@@ -61,10 +61,11 @@ module.exports = function (app) {
     /**
      * Delete conversation
      */
-    app.get('/conversations/delete',
+    app.get('/conversations/delete/:id',
         authMW(objectRepository),
         conversationAuthMW(objectRepository),
-        deleteConversation(objectRepository),
+        getConversationDataMW(objectRepository),
+        deleteConversationMW(objectRepository),
         function (req, res, next) {
             return res.redirect('/conversations');
         }
