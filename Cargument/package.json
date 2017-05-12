@@ -15,6 +15,7 @@
   "repository": "https://github.com/tamasdeak93/cargument-nodejs",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "chai": "^3.5.0",
     "ejs": "^2.5.6",
     "express": "^4.14.1",
     "express-session": "^1.15.2",
